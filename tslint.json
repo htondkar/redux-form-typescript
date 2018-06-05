@@ -21,10 +21,10 @@
       "static-before-instance",
       "variables-before-functions"
     ],
-    "no-any": true,
+    "no-console": false,
+    "no-any": false,
     "no-arg": true,
     "no-bitwise": true,
-    "no-console": [true, "log", "error", "debug", "info", "time", "timeEnd", "trace"],
     "no-consecutive-blank-lines": true,
     "no-construct": true,
     "no-debugger": true,

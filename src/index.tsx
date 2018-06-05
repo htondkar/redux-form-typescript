@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import mainStore from 'Store/mainStore'
 
 import App from './App'
+import './styles/index.sass'
 
 ReactDOM.render(
   <Provider store={mainStore}>

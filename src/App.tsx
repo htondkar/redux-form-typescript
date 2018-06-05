@@ -1,8 +1,14 @@
 import * as React from 'react'
+import Page from 'Components/Page/Page'
+import ContactForm from './Pages/ContactForm/ContanctFormContainer'
 
 class App extends React.Component {
   render() {
-    return <div className="App">your form here</div>
+    return (
+      <Page>
+        <ContactForm />
+      </Page>
+    )
   }
 }
 
