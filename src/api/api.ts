@@ -4,6 +4,8 @@ export interface IResponse {
   error?: { [key: string]: any }
 }
 
+export const delay = ms => new Promise(resolve => setTimeout(() => resolve, ms))
+
 class API {
   response: IResponse = {
     status: 200,
@@ -12,7 +14,7 @@ class API {
 
   call(__: any): Promise<IResponse> {
     console.log('submitting', __)
-    return new Promise(resolve => setTimeout(() => resolve(this.response), 3000))
+    return new Promise(resolve => setTimeout(() => resolve(this.response), 2000))
   }
 }
 

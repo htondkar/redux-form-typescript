@@ -64,7 +64,13 @@ const ContactForm: React.SFC<propsType> = ({
       />
 
       <div className="form-action-wrapper">
-        <Button text="Send" type="submit" disabled={isSubmitting} loading={isSubmitting} />
+        <Button
+          text="Send"
+          type="submit"
+          disabled={isSubmitting}
+          data-test-class="action-button"
+          loading={isSubmitting}
+        />
       </div>
 
       {messages && <div className="form-messages">{messages}</div>}

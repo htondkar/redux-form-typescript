@@ -25,7 +25,7 @@
       "Store/*": ["store/*"],
       "Pages/*": ["Pages/*"],
       "ActionsTypes/*": ["actionsTypes/*"],
-      "ActionsCreators/*": ["actionsCreators/*"]
+      "ActionCreators/*": ["actionCreators/*"]
     },
     "typeRoots": ["./src/types"]
   },

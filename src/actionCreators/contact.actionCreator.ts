@@ -1,6 +1,6 @@
 import contactActionsTypes from 'ActionsTypes/contact.actions'
-import api from 'api/api'
-import { handleResponse } from 'api/util'
+import api from '../api/api'
+import { handleResponse } from '../api/util'
 import { contactFormDataFormat } from 'Pages/ContactForm/ContactForm'
 import { Dispatch } from 'react-redux'
 import { reset } from 'redux-form'

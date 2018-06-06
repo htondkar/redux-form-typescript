@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import ContactForm, { contactFormDataFormat } from './ContactForm'
-import { submitContactForm } from 'actionCreators/contact.actionCreator'
+import { submitContactForm } from 'ActionCreators/contact.actionCreator'
 import { IAppState } from 'Store/AppState.interface'
 
 type dispatchProps = {

@@ -16,7 +16,8 @@
     "classnames": "^2.2.5",
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
-    "enzyme": "3.3.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "0.11.2",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
@@ -62,6 +63,7 @@
     "@types/node": "9.3.0",
     "@types/react": "16.0.35",
     "@types/react-dom": "16.0.3",
+    "react-addons-test-utils": "^15.6.2",
     "typescript": "^2.8.4"
   },
   "jest": {
@@ -85,8 +87,19 @@
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
     ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+      "Components/(.*)": "<rootDir>/src/components/$1",
+      "Reducers/(.*)": "<rootDir>/src/reducers/$1",
+      "Store/(.*)": "<rootDir>/src/store/$1",
+      "Pages/(.*)": "<rootDir>/src/Pages/$1",
+      "ActionsTypes/(.*)": "<rootDir>/src/actionsTypes/$1",
+      "ActionCreators/(.*)": "<rootDir>/src/actionCreators/$1"
     },
     "moduleFileExtensions": [
       "mjs",
