@@ -20,7 +20,13 @@ class ContactFormContainer extends React.Component<ContactFormContainerProps, ne
   }
 
   render() {
-    return <ContactForm onSubmit={this.onSubmit} isSubmitting={this.props.contact.isLoading} />
+    return (
+      <ContactForm
+        onSubmit={this.onSubmit}
+        isSubmitting={this.props.contact.isLoading}
+        messages={this.props.contact.messages}
+      />
+    )
   }
 }
 

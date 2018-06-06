@@ -15,6 +15,7 @@ import './contact-form-container.sass'
 type ownProps = {
   onSubmit: FormSubmitHandler
   isSubmitting?: boolean
+  messages?: string | string[]
 }
 
 type propsType = InjectedFormProps<contactFormDataFormat, ownProps> & ownProps
@@ -22,7 +23,7 @@ type propsType = InjectedFormProps<contactFormDataFormat, ownProps> & ownProps
 export type contactFormDataFormat = {
   name: string
   email: string
-  message: string
+  messages: string
 }
 
 // ────────────────────────────────────────────────────────────────────────────────
@@ -30,6 +31,7 @@ export type contactFormDataFormat = {
 const ContactForm: React.SFC<propsType> = ({
   onSubmit,
   handleSubmit,
+  messages,
   isSubmitting = false,
 }) => (
   <section className="form-wrapper">
@@ -64,6 +66,8 @@ const ContactForm: React.SFC<propsType> = ({
       <div className="form-action-wrapper">
         <Button text="Send" type="submit" disabled={isSubmitting} loading={isSubmitting} />
       </div>
+
+      {messages && <div className="form-messages">{messages}</div>}
     </form>
   </section>
 )

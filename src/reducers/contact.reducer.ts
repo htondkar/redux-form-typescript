@@ -7,8 +7,16 @@ type contactState = IAppState['contact']
 
 const actionHandlers: IActionHandlers<contactState> = {
   [`${contactActions.ACTION_NAME}_START`]: (state, __) => ({ ...state, isLoading: true }),
-  [`${contactActions.ACTION_NAME}_SUCCESS`]: (state, __) => ({ ...state, isLoading: false }),
-  [`${contactActions.ACTION_NAME}_FAIL`]: (state, __) => ({ ...state, isLoading: false }),
+  [`${contactActions.ACTION_NAME}_SUCCESS`]: (state, __) => ({
+    ...state,
+    isLoading: false,
+    messages: 'Your message successfully submitted',
+  }),
+  [`${contactActions.ACTION_NAME}_FAIL`]: (state, __) => ({
+    ...state,
+    isLoading: false,
+    messages: 'There was an error...',
+  }),
 }
 
 const contactReducer = (

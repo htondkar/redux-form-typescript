@@ -3,6 +3,7 @@ import api from 'api/api'
 import { handleResponse } from 'api/util'
 import { contactFormDataFormat } from 'Pages/ContactForm/ContactForm'
 import { Dispatch } from 'react-redux'
+import { reset } from 'redux-form'
 
 import BaseAction from './base.actionCreator'
 
@@ -16,7 +17,10 @@ export function submitContactForm(formValues: contactFormDataFormat) {
       dispatch,
       response: await api.call(formValues),
       onFail: contactActionsCreators.fail,
-      onSuccess: contactActionsCreators.success,
+      onSuccess: data => {
+        dispatch(reset('contact-form'))
+        return contactActionsCreators.success(data)
+      },
     })
   }
 }
