@@ -1,4 +1,4 @@
-import './contact-form-container.scss'
+import './contact-form-container.sass'
 
 import * as classnames from 'classnames'
 import * as React from 'react'
