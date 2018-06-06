@@ -22,7 +22,8 @@
     "paths": {
       "Reducers/*": ["reducers/*"],
       "Components/*": ["components/*"],
-      "Store/*": ["store/*"]
+      "Store/*": ["store/*"],
+      "Pages/*": ["Pages/*"]
     },
     "typeRoots": ["./src/types"]
   },

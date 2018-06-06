@@ -1,10 +1,16 @@
+import * as React from 'react'
+import { Field, InjectedFormProps, reduxForm } from 'redux-form'
+import { email, length, required } from 'redux-form-validators'
+
+import Button from 'Components/Button/Button'
+import TextInput from 'Components/Forms/TextInput/TextInput'
+import Textarea from 'Components/Forms/Textarea/Textarea'
+
 import './contact-form-container.sass'
 
-import * as classnames from 'classnames'
-import * as React from 'react'
-import { Field, InjectedFormProps, reduxForm, WrappedFieldProps } from 'redux-form'
-import { email, length, required } from 'redux-form-validators'
-import Button from '../../components/Button/Button'
+//
+// ─── TYPES ──────────────────────────────────────────────────────────────────────
+//
 
 type ContactFormProps = InjectedFormProps<formDataFormat> & {
   onSubmit?: (values: formDataFormat) => void
@@ -16,9 +22,7 @@ export type formDataFormat = {
   message: string
 }
 
-type fieldRenderer = (
-  props: WrappedFieldProps & { title: string; autoFocus?: boolean }
-) => JSX.Element
+// ────────────────────────────────────────────────────────────────────────────────
 
 class ContactForm extends React.Component<ContactFormProps, never> {
   onSubmit = (values: formDataFormat) => {
@@ -27,43 +31,6 @@ class ContactForm extends React.Component<ContactFormProps, never> {
     }
 
     this.props.onSubmit(values)
-  }
-
-  renderTextInput: fieldRenderer = props => {
-    const { title, input, meta, ...rest } = props
-    const showError = meta.touched
-
-    const className = classnames('field-row', {
-      focused: meta.active,
-      'has-errors': Boolean(showError && meta.error),
-    })
-
-    return (
-      <div className={className}>
-        <div className="field-title">{props.title}</div>
-        <input className="field-input" {...input} {...rest} />
-        <div className="field-error">{showError && meta.error}</div>
-      </div>
-    )
-  }
-
-  renderTextArea: fieldRenderer = props => {
-    const { title, input, meta, ...rest } = props
-
-    const showError = meta.touched
-
-    const className = classnames('field-row', {
-      focused: meta.active,
-      'has-errors': Boolean(showError && meta.error),
-    })
-
-    return (
-      <div className={className}>
-        <div className="field-title">{props.title}</div>
-        <textarea className="field-input" {...input} {...rest} rows={4} />
-        <div className="field-error">{showError && meta.error}</div>
-      </div>
-    )
   }
 
   render() {
@@ -77,7 +44,7 @@ class ContactForm extends React.Component<ContactFormProps, never> {
           <Field
             name="name"
             title="Name"
-            component={this.renderTextInput}
+            component={TextInput}
             validate={[required(), length({ min: 3 })]}
             autoFocus={true}
           />
@@ -85,14 +52,14 @@ class ContactForm extends React.Component<ContactFormProps, never> {
           <Field
             name="email"
             title="Email"
-            component={this.renderTextInput}
+            component={TextInput}
             validate={[required(), email()]}
           />
 
           <Field
             name="message"
             title="Your Message"
-            component={this.renderTextArea}
+            component={Textarea}
             validate={[required(), length({ min: 5 })]}
           />
 
@@ -105,6 +72,4 @@ class ContactForm extends React.Component<ContactFormProps, never> {
   }
 }
 
-const formStateProvider = reduxForm<formDataFormat>({ form: 'contact-form' })
-
-export default formStateProvider(ContactForm)
+export default reduxForm<formDataFormat>({ form: 'contact-form' })(ContactForm)
