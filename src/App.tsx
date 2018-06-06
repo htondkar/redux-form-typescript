@@ -1,15 +1,11 @@
 import * as React from 'react'
 import Page from 'Components/Page/Page'
-import ContactFormContainer from 'Pages/ContactForm/ContanctFormContainer'
+import ContactFormContainer from 'Pages/ContactForm/ContactFormContainer'
 
-class App extends React.Component {
-  render() {
-    return (
-      <Page>
-        <ContactFormContainer />
-      </Page>
-    )
-  }
-}
+const App = () => (
+  <Page>
+    <ContactFormContainer />
+  </Page>
+)
 
 export default App

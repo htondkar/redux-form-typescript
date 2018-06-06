@@ -1,10 +1,12 @@
 import * as React from 'react'
 import * as classnames from 'classnames'
 
+import './form-field.sass'
+
 const FormField = ({ children, title, input, meta, ...rest }) => {
   const showError = meta.touched
 
-  const className = classnames('field-row', {
+  const className = classnames('field', {
     focused: meta.active,
     'has-errors': Boolean(showError && meta.error),
   })
