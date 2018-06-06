@@ -11,16 +11,16 @@ const FormField = ({ children, title, input, meta, ...rest }) => {
     'has-errors': Boolean(showError && meta.error),
   })
 
-  const inputComponent = React.cloneElement(children, {
+  const childProps = {
     className: 'field-input',
     ...input,
     ...rest,
-  })
+  }
 
   return (
     <div className={className}>
       <div className="field-title">{title}</div>
-      {inputComponent}
+      {children(childProps)}
       <div className="field-error">{showError && meta.error}</div>
     </div>
   )
