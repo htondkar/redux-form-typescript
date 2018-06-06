@@ -1,17 +1,36 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
+import ContactForm, { contactFormDataFormat } from './ContactForm'
+import { submitContactForm } from 'actionCreators/contact.actionCreator'
+import { IAppState } from 'Store/AppState.interface'
 
-import ContactForm, { formDataFormat } from './ContactForm'
+type dispatchProps = {
+  submitContactForm: (values: contactFormDataFormat) => Promise<void>
+}
 
-type ContactFormContainerProps = {}
+type storeProps = {
+  contact: IAppState['contact']
+}
+
+type ContactFormContainerProps = dispatchProps & storeProps
 
 class ContactFormContainer extends React.Component<ContactFormContainerProps, never> {
-  onSubmit = (values: formDataFormat) => {
-    console.log(values)
+  onSubmit = (values: contactFormDataFormat) => {
+    this.props.submitContactForm(values)
   }
 
   render() {
-    return <ContactForm onSubmit={this.onSubmit} />
+    return <ContactForm onSubmit={this.onSubmit} isSubmitting={this.props.contact.isLoading} />
   }
 }
 
-export default ContactFormContainer
+const mapStateToProps = ({ contact }) => ({ contact })
+
+const mappedActions = dispatch => ({
+  submitContactForm: values => dispatch(submitContactForm(values)),
+})
+
+export default connect<storeProps, dispatchProps, {}, never>(
+  mapStateToProps,
+  mappedActions
+)(ContactFormContainer)
