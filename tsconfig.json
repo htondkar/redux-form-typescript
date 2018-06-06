@@ -23,7 +23,9 @@
       "Reducers/*": ["reducers/*"],
       "Components/*": ["components/*"],
       "Store/*": ["store/*"],
-      "Pages/*": ["Pages/*"]
+      "Pages/*": ["Pages/*"],
+      "ActionsTypes/*": ["actionsTypes/*"],
+      "ActionsCreators/*": ["actionsCreators/*"]
     },
     "typeRoots": ["./src/types"]
   },

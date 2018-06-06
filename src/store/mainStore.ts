@@ -22,7 +22,7 @@ middleWares.push(thunk)
 // ─── CREATE THE STORE ───────────────────────────────────────────────────────────
 //
 
-const mainStore: Store<IAppState> = createStore(
+const mainStore: Store<IAppState> = createStore<IAppState>(
   rootReducer,
   defaultState,
   composer(applyMiddleware(...middleWares))
