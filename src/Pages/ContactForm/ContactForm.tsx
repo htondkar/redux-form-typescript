@@ -45,6 +45,7 @@ const ContactForm: React.SFC<propsType> = ({
         validate={[required(), length({ min: 3 })]}
         autoFocus={true}
         disabled={isSubmitting}
+        data-test-id="name-field"
       />
 
       <Field
@@ -53,6 +54,7 @@ const ContactForm: React.SFC<propsType> = ({
         component={TextInput}
         validate={[required(), email()]}
         disabled={isSubmitting}
+        data-test-id="email-field"
       />
 
       <Field
@@ -61,6 +63,7 @@ const ContactForm: React.SFC<propsType> = ({
         component={Textarea}
         validate={[required(), length({ min: 5 })]}
         disabled={isSubmitting}
+        data-test-id="message-field"
       />
 
       <div className="form-action-wrapper">
@@ -68,12 +71,16 @@ const ContactForm: React.SFC<propsType> = ({
           text="Send"
           type="submit"
           disabled={isSubmitting}
-          data-test-class="action-button"
+          data-test-id="submit-button"
           loading={isSubmitting}
         />
       </div>
 
-      {messages && <div className="form-messages">{messages}</div>}
+      {messages && (
+        <div className="form-messages" data-test-id="submit-message">
+          {messages}
+        </div>
+      )}
     </form>
   </section>
 )
